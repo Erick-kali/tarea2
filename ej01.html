@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ej01 - Cambio de Estilo al Clic</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:1em; }
+    #caja { width:100%; height:100px; background:#eee; margin-top:1em; transition: background 0.3s; }
+    button { padding:0.5em 1em; background:#5C9DBF; color:white; border:none; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <h2>Ejercicio 1: Cambio de Estilo al Clic</h2>
+  <button id="btnColor">Cambiar Color</button>
+  <div id="caja"></div>
+  <script>
+    document.getElementById('btnColor').onclick = () => {
+      document.getElementById('caja').style.background = '#'+Math.floor(Math.random()*16777215).toString(16);
+    };
+  </script>
+</body>
+</html>

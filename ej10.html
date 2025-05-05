@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ej10 - Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:1em; }
+    #quiz { margin-top:1em; }
+    button { display:block; margin:0.5em 0; padding:0.5em 1em; }
+  </style>
+</head>
+<body>
+  <h2>Ejercicio 10: Juego de Preguntas y Respuestas</h2>
+  <div id="quiz"></div>
+  <script>
+    const questions = [
+      { q: '¿Capital de Francia?', opts: ['Madrid', 'París', 'Berlín'], a: 1 },
+      { q: '2 + 2 = ?', opts: ['3', '4', '5'], a: 1 },
+      { q: '¿Color primario?', opts: ['Verde', 'Naranja', 'Rojo'], a: 2 }
+    ];
+    let qi = 0, score = 0;
+    const quizEl = document.getElementById('quiz');
+    function showQ() {
+      if (qi >= questions.length) {
+        quizEl.innerHTML = `<p>Tu puntuación: ${score} / ${questions.length}</p>`;
+        return;
+      }
+      const { q, opts, a } = questions[qi];
+      quizEl.innerHTML = `<p>${q}</p>` + opts.map((o, i) =>
+        `<button onclick="check(${i}, ${a})">${o}</button>`
+      ).join('');
+    }
+    function check(i, a) {
+      if (i === a) score++;
+      qi++;
+      showQ();
+    }
+    showQ();
+  </script>
+</body>
+</html>

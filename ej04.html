@@ -1,0 +1,41 @@
+<!-- ej04.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ej04 - Reloj Analógico</title>
+  <style>
+    body { font-family: Arial, sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; }
+    .clock { position: relative; width:300px; height:300px; }
+    .clock img { position: absolute; top:0; left:0; width:100%; height:100%; }
+    .hand { transform-origin: 50% 90%;  }
+    #hour { z-index: 3; }
+    #minute { z-index: 2; }
+    #second { z-index: 4; }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <img id="face" src="https://i.postimg.cc/2yP1QnBk/clock-face.png" alt="Esfera del reloj">
+    <img id="hour" class="hand" src="https://www.clipartmax.com/png/full/13-138815_hand-signs-symbols-clocks-clock-clock-minute-hand-png.png" alt="Hora">
+    <img id="minute" class="hand" src="https://www.pngrepo.com/download/301204/clock-hand.png" alt="Minuto">
+    <img id="second" class="hand" src="https://www.klockit.com/media/catalog/product/cache/926507dc7f93631a094422215b778fe0/2/3/2-3-4-red-sweep-second-hand-group-a.jpg" alt="Segundo">
+  </div>
+
+  <script>
+    setInterval(() => {
+      const now = new Date();
+      const h = now.getHours() % 12;
+      const m = now.getMinutes();
+      const s = now.getSeconds();
+      const degH = (h + m/60) * 30;     
+      const degM = (m + s/60) * 6;       
+      const degS = s * 6;               
+      document.getElementById('hour').style.transform = `rotate(${degH}deg)`;
+      document.getElementById('minute').style.transform = `rotate(${degM}deg)`;
+      document.getElementById('second').style.transform = `rotate(${degS}deg)`;
+    }, 1000);
+  </script>
+</body>
+</html>

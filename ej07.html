@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ej07 - Menú Desplegable</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:1em; }
+    nav ul { padding:0; list-style:none; }
+    nav li { position:relative; }
+    .submenu { display:none; list-style:none; padding-left:1em; }
+    a { text-decoration:none; color:#5C9DBF; }
+  </style>
+</head>
+<body>
+  <h2>Ejercicio 7: Menú de Navegación Desplegable</h2>
+  <nav>
+    <ul>
+      <li><a href="#">Menú 1</a>
+        <ul class="submenu">
+          <li><a href="#">Sub 1.1</a></li>
+          <li><a href="#">Sub 1.2</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Menú 2</a>
+        <ul class="submenu">
+          <li><a href="#">Sub 2.1</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <script>
+    document.querySelectorAll('nav > ul > li > a').forEach(a => {
+      a.onclick = e => {
+        e.preventDefault();
+        const sub = a.nextElementSibling;
+        sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+      };
+    });
+  </script>
+</body>
+</html>

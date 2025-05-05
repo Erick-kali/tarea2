@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ej02 - Calculadora Simple</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:1em; }
+    input { width:100%; font-size:1.2em; padding:0.5em; }
+    button { width:23%; margin:1%; padding:1em; font-size:1em; }
+  </style>
+</head>
+<body>
+  <h2>Ejercicio 2: Calculadora Simple</h2>
+  <input id="display" type="text" readonly />
+  <div>
+    <button class="calc">7</button><button class="calc">8</button><button class="calc">9</button><button class="calc">/</button>
+    <button class="calc">4</button><button class="calc">5</button><button class="calc">6</button><button class="calc">*</button>
+    <button class="calc">1</button><button class="calc">2</button><button class="calc">3</button><button class="calc">-</button>
+    <button class="calc">0</button><button class="calc">.</button><button id="eq">=</button><button class="calc">+</button>
+  </div>
+  <script>
+    const disp = document.getElementById('display');
+    document.querySelectorAll('.calc').forEach(b => b.onclick = () => disp.value += b.textContent);
+    document.getElementById('eq').onclick = () => { try { disp.value = eval(disp.value) } catch{} };
+  </script>
+</body>
+</html>

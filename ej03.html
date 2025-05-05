@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambio de Imagen</title>
+  <style>
+    .imagen-hover {
+      display: block;
+      margin: 50px auto;
+      width: 300px;
+      height: 200px;
+      object-fit: cover; /* Ajusta la imagen sin deformarla */
+      border-radius: 10px;
+      transition: all 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <img 
+    src="https://picsum.photos/id/237/300/200" 
+    alt="Imagen perro" 
+    id="imagen" 
+    class="imagen-hover"
+    onmouseover="cambiarImagen()"  
+    onmouseout="restaurarImagen()"
+  >
+
+  <script>
+    const imagen = document.getElementById("imagen");
+
+    function cambiarImagen() {
+      imagen.src = "https://picsum.photos/id/1025/300/200"; 
+    }
+
+    function restaurarImagen() {
+      imagen.src = "https://picsum.photos/id/237/300/200"; 
+    }
+  </script>
+
+</body>
+</html>

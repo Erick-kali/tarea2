@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ej08 - Carrusel</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:1em; }
+    .carousel { position:relative; width:400px; height:200px; overflow:hidden; }
+    .carousel img { position:absolute; top:0; left:0; width:100%; display:none; }
+    .carousel img.active { display:block; }
+    button { margin:5px; padding:0.5em 1em; }
+  </style>
+</head>
+<body>
+  <h2>Ejercicio 8: Carrusel de Imágenes</h2>
+  <div class="carousel">
+    <img src="https://i.postimg.cc/vmZp1Y3D/landscape1.jpg" class="active" alt="Paisaje 1">
+    <img src="https://picsum.photos/id/1011/400/250" alt="Paisaje 2">
+    <img src="https://picsum.photos/id/1035/400/250" alt="Paisaje 3">
+  </div>
+  <button id="prev">&#9664; Anterior</button>
+  <button id="next">Siguiente &#9654;</button>
+  <script>
+    let idx = 0;
+    const pics = document.querySelectorAll('.carousel img');
+    document.getElementById('next').onclick = () => {
+      pics[idx].classList.remove('active');
+      idx = (idx + 1) % pics.length;
+      pics[idx].classList.add('active');
+    };
+    document.getElementById('prev').onclick = () => {
+      pics[idx].classList.remove('active');
+      idx = (idx - 1 + pics.length) % pics.length;
+      pics[idx].classList.add('active');
+    };
+    setInterval(() => document.getElementById('next').onclick(), 5000);
+  </script>
+</body>
+</html>
